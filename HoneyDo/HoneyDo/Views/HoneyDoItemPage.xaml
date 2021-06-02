@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HoneyDo.Views.HoneyDoItemPage">
+    <ContentPage.Content>
+        <StackLayout Spacing="20"
+                     Padding="15">
+
+            <Label Text="Name"
+                   FontSize="Medium" />
+            <Entry Text="{Binding HoneyDoItem.Description}"
+                   FontSize="Large"
+                   FontAttributes="Bold"
+                   Margin="0,-10,0,0" />
+
+            <Label Text="Assigned To"
+                   FontSize="Medium" />
+            <Picker x:Name="AssignedToPicker"
+                    Title="Assigned to"
+                    Margin="0,-10,0,0"
+                    SelectedIndexChanged="OnAssignedToPickerSelectedIndexChanged">
+                <Picker.Items>
+                    <x:String>Me</x:String>
+                    <x:String>You</x:String>
+                    <x:String>Us</x:String>
+                    <x:String>Nobody</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Label Text="Priority"
+                   FontSize="Medium" />
+            <Picker x:Name="PriorityPicker"
+                    Title="Priority"
+                    Margin="0,-10,0,0"
+                    SelectedIndexChanged="OnPriorityPickerSelectedIndexChanged">
+                <Picker.Items>
+                    <x:String>Low</x:String>
+                    <x:String>Medium</x:String>
+                    <x:String>High</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Label Text="Category"
+                   FontSize="Medium" />
+            <Picker x:Name="CategoryPicker"
+                    Title="Category"
+                    Margin="0,-10,0,0"
+                    SelectedIndexChanged="OnCategoryPickerSelectedIndexChanged">
+                <Picker.Items>
+                    <x:String>Home indoors</x:String>
+                    <x:String>Home outdoors</x:String>
+                    <x:String>Errand</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Label Text="Due"
+                   FontSize="Medium" />
+            <DatePicker HorizontalOptions="Start"
+                        Date="{Binding HoneyDoItem.DueDate}"
+                        Margin="0,-10,0,0" />
+
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="SaveButton"
+                        Text="Save"
+                        Command="{Binding SaveItemCommand}" />
+                <Button x:Name="CompletedButton"
+                        Text="Completed"
+                        Command="{Binding DeleteItemCommand}" />
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
